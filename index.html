@@ -43,7 +43,6 @@
   </script>
 
   <style>
-    /* Haute-galerie editorial typography and subtle interactions */
     body {
       background-color: #FAF9F6;
       color: #121210;
@@ -61,7 +60,6 @@
       font-family: "Cormorant Garamond", Georgia, serif;
     }
 
-    /* Artwork image hover zoom */
     .artwork-img {
       transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
     }
@@ -69,7 +67,6 @@
       transform: scale(1.025);
     }
 
-    /* Modal transition */
     #lightbox-modal {
       transition: opacity 0.25s ease-out, visibility 0.25s ease-out;
     }
@@ -87,11 +84,9 @@
 </head>
 <body class="bg-gallery-canvas text-gallery-deep min-h-screen flex flex-col antialiased selection:bg-gallery-deep selection:text-gallery-canvas">
 
-  <!-- TOP BAR: Clean Minimalist 3-Zone Header con dicitura Portfolio Ufficiale -->
+  <!-- TOP BAR -->
   <header class="sticky top-0 z-40 bg-gallery-canvas/92 backdrop-blur-md border-b border-gallery-border transition-colors">
     <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 h-20 flex items-center justify-between gap-8">
-      
-      <!-- Zone 1: Wordmark & Portfolio Ufficiale Subtitle -->
       <a href="#" class="flex flex-col group">
         <span class="font-serif text-2xl lg:text-3xl tracking-tight text-gallery-deep group-hover:opacity-75 transition-opacity whitespace-nowrap">
           Lisa Giulia Saccuta
@@ -101,30 +96,24 @@
         </span>
       </a>
 
-      <!-- Zone 2: Navigation Links Essenziali: [Opere], [Bio & Statement], [Contatti] -->
       <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] text-gallery-muted font-sans font-medium">
         <a href="#opere" class="hover:text-gallery-deep transition-colors whitespace-nowrap shrink-0">Opere</a>
         <a href="#bio" class="hover:text-gallery-deep transition-colors whitespace-nowrap shrink-0">Bio &amp; Statement</a>
         <a href="#contatti" class="hover:text-gallery-deep transition-colors whitespace-nowrap shrink-0">Contatti</a>
       </nav>
 
-      <!-- Zone 3: Primary Action & Mobile Menu Button -->
       <div class="flex items-center gap-4 shrink-0">
         <a href="#contatti" class="hidden sm:inline-block text-xs uppercase tracking-[0.18em] text-gallery-deep border border-gallery-deep/20 hover:border-gallery-deep hover:bg-gallery-deep hover:text-gallery-canvas px-4 py-2 transition-all duration-300 whitespace-nowrap shrink-0">
           Inquire / Contatti
         </a>
-
-        <!-- Mobile Menu Toggle Button -->
         <button id="mobile-menu-btn" type="button" aria-label="Menu" class="md:hidden p-2 text-gallery-deep hover:opacity-60 transition-opacity">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h16" />
           </svg>
         </button>
       </div>
-
     </div>
 
-    <!-- Mobile Drawer Menu: Solo Voci Essenziali -->
     <div id="mobile-menu" class="hidden md:hidden border-b border-gallery-border bg-gallery-canvas px-6 py-6 transition-all">
       <div class="flex flex-col space-y-4 text-xs uppercase tracking-[0.2em] text-gallery-muted font-sans font-medium">
         <div class="text-[10px] uppercase tracking-[0.22em] text-gallery-muted font-sans pb-2 border-b border-gallery-border/60">
@@ -139,12 +128,9 @@
   </header>
 
   <main class="flex-grow">
-
-    <!-- HERO SECTION: Pittura & Indicazione del Portfolio Ufficiale -->
+    <!-- HERO SECTION -->
     <section class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 pt-16 sm:pt-24 lg:pt-32 pb-16 lg:pb-24 border-b border-gallery-border">
       <div class="max-w-5xl">
-        
-        <!-- Indicazione Raffinata ed Elegante del Portfolio Ufficiale -->
         <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 border border-gallery-border bg-gallery-surface text-[11px] uppercase tracking-[0.22em] text-gallery-deep font-sans font-medium mb-6">
           <span class="w-1.5 h-1.5 rounded-full bg-gallery-deep" aria-hidden="true"></span>
           <span>Portfolio Ufficiale di Lisa Giulia Saccuta</span>
@@ -173,20 +159,14 @@
       </div>
     </section>
 
-    <!-- GALLERIA OPERE SECTION: 
-         - Opere dal PDF: immagini reali estratte direttamente dal documento.
-         - Sezioni senza immagini (Fotografia, Sound Art, o opere non illustrate): schede testuali pulite senza box vuoti.
-    -->
+    <!-- GALLERIA OPERE -->
     <section id="opere" class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-20 lg:py-28 border-b border-gallery-border">
-      
-      <!-- Gallery Header & Category Filters -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
         <div>
           <span class="text-xs uppercase tracking-[0.25em] text-gallery-muted font-sans block mb-2">Catalogo Selezionato</span>
           <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-gallery-deep">Opere</h2>
         </div>
 
-        <!-- Category Filter Buttons: Tutte, Pittura, Fotografia, Sound Art -->
         <div class="flex flex-wrap items-center gap-2 border-b border-gallery-border pb-2 md:pb-0 md:border-b-0" id="filter-container">
           <button type="button" data-filter="all" class="filter-btn active text-xs uppercase tracking-[0.16em] px-3.5 py-1.5 transition-colors font-medium text-gallery-deep border-b-2 border-gallery-deep">
             Tutte le Opere (<span id="count-all">0</span>)
@@ -203,27 +183,21 @@
         </div>
       </div>
 
-      <!-- Asymmetrical Editorial Art Grid -->
-      <div id="artworks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-16">
-        <!-- Inserite dinamicamente via JS: immagini reali dal PDF o schede testuali pulite -->
-      </div>
+      <div id="artworks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-16"></div>
 
       <div id="empty-state" class="hidden py-20 text-center">
         <p class="font-serif italic text-2xl text-gallery-muted">Nessuna opera registrata in questa categoria.</p>
       </div>
-
     </section>
 
-    <!-- BIO & STATEMENT D'ARTISTA SECTION: Residenza Gela specificata con chiarezza -->
+    <!-- BIO & STATEMENT -->
     <section id="bio" class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-20 lg:py-28 border-b border-gallery-border">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
-        
-        <!-- Portrait Column (Formato originale e naturale dell'artista, senza forzature né ritagli) -->
         <div class="lg:col-span-5">
           <div class="bg-gallery-surface border border-gallery-border p-3 sm:p-4">
             <img 
               id="artist-photo"
-              src="images/lisa_saccuta_foto.jpg" 
+              src="public/assets/aistudio/images/lisa_saccuta_foto.jpg" 
               alt="Ritratto di Lisa Giulia Saccuta" 
               class="w-full h-auto block grayscale contrast-105 hover:grayscale-0 transition-all duration-700 shadow-sm"
               loading="lazy"
@@ -234,7 +208,6 @@
             </div>
           </div>
 
-          <!-- Academic & Profile Summary: Residenza a Gela e Laurea Magistrale conseguita -->
           <div class="mt-8 p-6 bg-gallery-surface border border-gallery-border">
             <span class="text-[10px] uppercase tracking-[0.25em] text-gallery-muted block mb-3 font-mono">Dati &amp; Formazione Accademica</span>
             <ul class="space-y-3 text-xs text-gallery-secondary font-sans">
@@ -264,7 +237,6 @@
           </div>
         </div>
 
-        <!-- Statement Column -->
         <div class="lg:col-span-7 space-y-8">
           <div>
             <span class="text-xs uppercase tracking-[0.25em] text-gallery-muted font-sans block mb-2">Identità Artistica</span>
@@ -273,14 +245,12 @@
             </h2>
           </div>
 
-          <!-- Biografia Narrativa Ufficiale -->
           <div class="text-base sm:text-lg text-gallery-secondary font-sans leading-relaxed space-y-5">
             <p>
               Nata a Gela, in Sicilia, nel 2001, dove attualmente risiede e conduce la propria ricerca artistica. Si diploma presso il Liceo Artistico "E. Majorana" nel 2020 e consegue il diploma accademico di primo livello in Pittura nel 2023, per poi completare e conseguire la Laurea Magistrale in Pittura (Diploma Accademico di secondo livello) all'Accademia di Belle Arti di Catania.
             </p>
           </div>
 
-          <!-- Statement d'Artista Integrale Ufficiale -->
           <div class="bg-gallery-surface p-8 sm:p-10 border-l-2 border-gallery-deep border-y border-r border-gallery-border">
             <span class="text-[10px] uppercase tracking-[0.25em] text-gallery-muted block mb-4 font-mono">Dichiarazione d'Artista</span>
             <blockquote class="font-serif text-lg sm:text-xl text-gallery-deep leading-relaxed space-y-4 italic">
@@ -295,203 +265,13 @@
               </p>
             </blockquote>
           </div>
-
-          <!-- 3 Pilastri della Ricerca Visiva -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-            <div class="p-5 border border-gallery-border">
-              <h3 class="font-serif text-lg italic text-gallery-deep mb-2">Folklore &amp; Terra d'Origine</h3>
-              <p class="text-xs text-gallery-muted leading-relaxed font-sans">
-                Archetipi popolari della Sicilia, memorie orali e simbolismo mediterraneo trasformati in paesaggi interiori.
-              </p>
-            </div>
-            <div class="p-5 border border-gallery-border">
-              <h3 class="font-serif text-lg italic text-gallery-deep mb-2">Memoria &amp; Esperienza Femminile</h3>
-              <p class="text-xs text-gallery-muted leading-relaxed font-sans">
-                Corpi, madonne quotidiane e figure mitologiche che riaffermano lo sguardo femminile contro i retaggi imposti.
-              </p>
-            </div>
-            <div class="p-5 border border-gallery-border">
-              <h3 class="font-serif text-lg italic text-gallery-deep mb-2">Cromatismo Acido &amp; Pop</h3>
-              <p class="text-xs text-gallery-muted leading-relaxed font-sans">
-                Accostamenti acidi e contrasti vibranti tra pittura a olio, cultura pop contemporanea e street art.
-              </p>
-            </div>
-          </div>
-
         </div>
-
       </div>
     </section>
 
-    <!-- SEZIONE LINK UFFICIALI & ARCHIVI: Schede testuali pulite con i link ufficiali forniti -->
-    <section class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-20 lg:py-28 border-b border-gallery-border">
-      <div class="max-w-4xl">
-        <span class="text-xs uppercase tracking-[0.25em] text-gallery-muted font-sans block mb-2">Riferimenti &amp; Ricerca</span>
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-gallery-deep mb-12">
-          Link Ufficiali &amp; Archivi
-        </h2>
-
-        <!-- Link Ufficiali senza immagini -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          
-          <!-- Link 1: Mostra Fotografica "Dove Habitat L'immaginario" -->
-          <a 
-            href="https://percorsiconibambini.it/youthcity/2020/02/04/a-gela-la-prima-mostra-dove-habitat-limmagginario-e-un-successo-adolescenti-raccontano-la-citta/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="group block p-6 bg-gallery-surface border border-gallery-border hover:border-gallery-deep transition-all duration-300"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase tracking-widest text-gallery-muted font-mono">Fotografia / Mostra</span>
-              <span class="text-sm text-gallery-muted group-hover:text-gallery-deep transition-colors">↗</span>
-            </div>
-            <h3 class="font-serif text-2xl text-gallery-deep italic group-hover:underline">Mostra Fotografica "Dove Habitat L'immaginario"</h3>
-            <p class="text-xs text-gallery-secondary mt-2.5 font-sans leading-relaxed">
-              Reportage fotografico e indagine documentaria sul territorio di Gela, realizzato nell'ambito del progetto Youth City Factory.
-            </p>
-            <span class="inline-block mt-4 text-[11px] uppercase tracking-wider text-gallery-deep font-medium underline underline-offset-4">
-              Apri articolo di documentazione
-            </span>
-          </a>
-
-          <!-- Link 2: Almanacco YAG 2025 -->
-          <a 
-            href="https://yag-garage.com/archivio/almanacco-yag-2025/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="group block p-6 bg-gallery-surface border border-gallery-border hover:border-gallery-deep transition-all duration-300"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase tracking-widest text-gallery-muted font-mono">Pubblicazione 2025</span>
-              <span class="text-sm text-gallery-muted group-hover:text-gallery-deep transition-colors">↗</span>
-            </div>
-            <h3 class="font-serif text-2xl text-gallery-deep italic group-hover:underline">Almanacco YAG 2025</h3>
-            <p class="text-xs text-gallery-secondary mt-2.5 font-sans leading-relaxed">
-              Archivio e pubblicazione editoriale d'arte contemporanea a cura di Young Artist Gallery (YAG/garage).
-            </p>
-            <span class="inline-block mt-4 text-[11px] uppercase tracking-wider text-gallery-deep font-medium underline underline-offset-4">
-              Consulta l'archivio YAG
-            </span>
-          </a>
-
-          <!-- Link 3: Sound Art / MPDS Audio Archive -->
-          <a 
-            href="https://www.mpdsaudioarchive.org/suoni/4-ronald-dump-lisa-saccuta/" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="group block p-6 bg-gallery-surface border border-gallery-border hover:border-gallery-deep transition-all duration-300"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase tracking-widest text-gallery-muted font-mono">Sound Art / Archivio Audio</span>
-              <span class="text-sm text-gallery-muted group-hover:text-gallery-deep transition-colors">↗</span>
-            </div>
-            <h3 class="font-serif text-2xl text-gallery-deep italic group-hover:underline">Sound Art / MPDS Audio Archive</h3>
-            <p class="text-xs text-gallery-secondary mt-2.5 font-sans leading-relaxed">
-              Traccia sonora sperimentale di Lisa Saccuta archiviata sulla piattaforma internazionale MPDS Audio Archive.
-            </p>
-            <span class="inline-block mt-4 text-[11px] uppercase tracking-wider text-gallery-deep font-medium underline underline-offset-4">
-              Ascolta la traccia sonora
-            </span>
-          </a>
-
-          <!-- Link 4: Profilo Academia.edu -->
-          <a 
-            href="https://independent.academia.edu/LisaSaccuta" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="group block p-6 bg-gallery-surface border border-gallery-border hover:border-gallery-deep transition-all duration-300"
-          >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-[10px] uppercase tracking-widest text-gallery-muted font-mono">Profilo Accademico</span>
-              <span class="text-sm text-gallery-muted group-hover:text-gallery-deep transition-colors">↗</span>
-            </div>
-            <h3 class="font-serif text-2xl text-gallery-deep italic group-hover:underline">Profilo Academia.edu</h3>
-            <p class="text-xs text-gallery-secondary mt-2.5 font-sans leading-relaxed">
-              Testi teorici, contributi critici e ricerche visive di Lisa Saccuta raccolti sul portale accademico indipendente.
-            </p>
-            <span class="inline-block mt-4 text-[11px] uppercase tracking-wider text-gallery-deep font-medium underline underline-offset-4">
-              Accedi alle pubblicazioni
-            </span>
-          </a>
-
-        </div>
-
-        <!-- Cronologia Mostre, Workshop e Riconoscimenti -->
-        <div class="mt-16 space-y-8">
-          <div class="border-t border-gallery-border pt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-3 text-xs uppercase tracking-widest text-gallery-muted font-mono">
-              2025 · Corso Intensivo
-            </div>
-            <div class="md:col-span-9">
-              <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic">Workshop "PAINTING EXPERIENCE – Pittura come pratica e modo di pensare"</h3>
-              <p class="text-xs text-gallery-muted mt-1 uppercase tracking-wider font-sans">Fondazione Brodbeck · Condotto dalla Prof.ssa Barbara Cammarata</p>
-              <p class="text-sm text-gallery-secondary mt-2 leading-relaxed font-sans">
-                Sviluppo, allestimento e presentazione di un corpo pittorico inedito negli spazi della Fondazione Brodbeck.
-              </p>
-            </div>
-          </div>
-
-          <div class="border-t border-gallery-border pt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-3 text-xs uppercase tracking-widest text-gallery-muted font-mono">
-              2025 · Riconoscimento
-            </div>
-            <div class="md:col-span-9">
-              <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic">6ª Edizione di "ModArte" (Premio Onorario)</h3>
-              <p class="text-xs text-gallery-muted mt-1 uppercase tracking-wider font-sans">Comune di Pietrasanta, Toscana</p>
-              <p class="text-sm text-gallery-secondary mt-2 leading-relaxed font-sans">
-                Selezione e riconoscimento onorario nell'ambito della rassegna d'arte a Pietrasanta.
-              </p>
-            </div>
-          </div>
-
-          <div class="border-t border-gallery-border pt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-3 text-xs uppercase tracking-widest text-gallery-muted font-mono">
-              2024 · Suono
-            </div>
-            <div class="md:col-span-9">
-              <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic">Progetto Sonoro "RE-SOUNDSCAPE VOL. #1"</h3>
-              <p class="text-xs text-gallery-muted mt-1 uppercase tracking-wider font-sans">In collaborazione con Radio Ciroma e RAM Radioartemobile</p>
-              <p class="text-sm text-gallery-secondary mt-2 leading-relaxed font-sans">
-                Composizione e indagine sulle frequenze ambientali per la piattaforma d'arte sonora RAM.
-              </p>
-            </div>
-          </div>
-
-          <div class="border-t border-gallery-border pt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-3 text-xs uppercase tracking-widest text-gallery-muted font-mono">
-              2020 · Fotografia
-            </div>
-            <div class="md:col-span-9">
-              <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic">Mostra Collettiva "Dove Habitat L'immaginario"</h3>
-              <p class="text-xs text-gallery-muted mt-1 uppercase tracking-wider font-sans">Youth Center Macchitella, Gela</p>
-              <p class="text-sm text-gallery-secondary mt-2 leading-relaxed font-sans">
-                Reportage fotografico sul territorio (150 opere esposte) ideato con Ass. Mediterranean Planners.
-              </p>
-            </div>
-          </div>
-
-          <div class="border-t border-gallery-border pt-6 grid grid-cols-1 md:grid-cols-12 gap-4">
-            <div class="md:col-span-3 text-xs uppercase tracking-widest text-gallery-muted font-mono">
-              2018–2019 · Arte Pubblica
-            </div>
-            <div class="md:col-span-9">
-              <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic">Progetto "ART FLOW"</h3>
-              <p class="text-xs text-gallery-muted mt-1 uppercase tracking-wider font-sans">Associazione Culturale S.M.A.F., Gela</p>
-              <p class="text-sm text-gallery-secondary mt-2 leading-relaxed font-sans">
-                Interventi murali di rigenerazione urbana ("IRREMOVIBILE" e "Viltà Congenita").
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- CONTATTI & INQUIRY FORM: Residenza e Studio a Gela, nessun riferimento a Instagram -->
+    <!-- CONTATTI -->
     <section id="contatti" class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-20 lg:py-28">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
-        
-        <!-- Dati di Contatto Diretti Reali -->
         <div class="lg:col-span-5 space-y-8">
           <div>
             <span class="text-xs uppercase tracking-[0.25em] text-gallery-muted font-sans block mb-2">Contatti &amp; Studio</span>
@@ -500,10 +280,6 @@
             </h2>
           </div>
 
-          <p class="text-sm text-gallery-secondary font-sans leading-relaxed">
-            Per informazioni sulla disponibilità e acquisizione delle opere, progetti espositivi, collaborazioni curatoriali o visite in studio su appuntamento.
-          </p>
-
           <div class="space-y-6 pt-4 border-t border-gallery-border">
             <div>
               <span class="text-[10px] uppercase tracking-[0.2em] text-gallery-muted block font-mono">E-Mail</span>
@@ -511,14 +287,12 @@
                 saccutalisa@gmail.com
               </a>
             </div>
-
             <div>
               <span class="text-[10px] uppercase tracking-[0.2em] text-gallery-muted block font-mono">Cellulare</span>
               <a href="tel:+393275388172" class="font-serif text-2xl text-gallery-deep hover:underline">
                 +39 327 538 8172
               </a>
             </div>
-
             <div>
               <span class="text-[10px] uppercase tracking-[0.2em] text-gallery-muted block font-mono">Residenza &amp; Studio</span>
               <p class="text-sm text-gallery-secondary font-sans mt-0.5">
@@ -528,7 +302,6 @@
           </div>
         </div>
 
-        <!-- Modulo di Richiesta Contatto -->
         <div class="lg:col-span-7 bg-gallery-surface p-8 sm:p-12 border border-gallery-border">
           <span class="text-[10px] uppercase tracking-[0.25em] text-gallery-muted block mb-2 font-mono">Richiesta Informazioni</span>
           <h3 class="font-serif text-2xl text-gallery-deep italic mb-6">Contatta l'Artista</h3>
@@ -537,470 +310,110 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="name" class="block text-xs uppercase tracking-widest text-gallery-muted mb-2">Nome / Istituzione *</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  required 
-                  placeholder="Es. Curatore / Collezionista..." 
-                  class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"
-                />
+                <input type="text" id="name" name="name" required placeholder="Es. Curatore / Collezionista..." class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"/>
               </div>
-
               <div>
                 <label for="email" class="block text-xs uppercase tracking-widest text-gallery-muted mb-2">Email *</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  required 
-                  placeholder="nome@dominio.it" 
-                  class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"
-                />
+                <input type="email" id="email" name="email" required placeholder="nome@dominio.it" class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"/>
               </div>
             </div>
-
-            <div>
-              <label for="subject" class="block text-xs uppercase tracking-widest text-gallery-muted mb-2">Oggetto della Richiesta</label>
-              <select 
-                id="subject" 
-                name="subject" 
-                class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"
-              >
-                <option value="acquisition">Disponibilità &amp; Acquisizione Opera</option>
-                <option value="exhibition">Proposta Espositiva / Mostra</option>
-                <option value="catalogue">Richiesta Catalogo &amp; Dossier Critico</option>
-                <option value="visit">Visita Studio (Gela)</option>
-                <option value="other">Altra Richiesta</option>
-              </select>
-            </div>
-
             <div>
               <label for="message" class="block text-xs uppercase tracking-widest text-gallery-muted mb-2">Messaggio *</label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="5" 
-                required 
-                placeholder="Specificare l'opera d'interesse o i dettagli della richiesta..." 
-                class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"
-              ></textarea>
+              <textarea id="message" name="message" rows="5" required placeholder="Messaggio..." class="w-full bg-gallery-canvas border border-gallery-border px-4 py-3 text-sm text-gallery-deep focus:outline-none focus:border-gallery-deep transition-colors"></textarea>
             </div>
-
             <div class="flex items-center justify-between pt-2">
-              <button 
-                type="submit" 
-                class="text-xs uppercase tracking-[0.2em] bg-gallery-deep text-gallery-canvas px-6 py-3.5 hover:bg-gallery-secondary transition-colors"
-              >
+              <button type="submit" class="text-xs uppercase tracking-[0.2em] bg-gallery-deep text-gallery-canvas px-6 py-3.5 hover:bg-gallery-secondary transition-colors">
                 Invia Messaggio
               </button>
               <span id="form-feedback" class="text-xs text-gallery-muted italic"></span>
             </div>
           </form>
         </div>
-
       </div>
     </section>
-
   </main>
 
-  <!-- FOOTER MINIMALE: Solo voci essenziali (Opere, Bio & Statement, Contatti) e dicitura Portfolio Ufficiale -->
   <footer class="border-t border-gallery-border bg-gallery-canvas py-12">
     <div class="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-gallery-muted font-sans uppercase tracking-widest">
-      <div>
-        © 2026 Portfolio Ufficiale di Lisa Giulia Saccuta.
-      </div>
+      <div>© 2026 Portfolio Ufficiale di Lisa Giulia Saccuta.</div>
       <div class="flex items-center gap-6">
         <a href="#opere" class="hover:text-gallery-deep transition-colors">Opere</a>
         <a href="#bio" class="hover:text-gallery-deep transition-colors">Bio &amp; Statement</a>
         <a href="#contatti" class="hover:text-gallery-deep transition-colors">Contatti</a>
       </div>
-      <div>
-        Pittura ad Olio · Gela (CL), Sicilia
-      </div>
+      <div>Pittura ad Olio · Gela (CL), Sicilia</div>
     </div>
   </footer>
 
-  <!-- LIGHTBOX MODAL (Attivo per le opere pittoriche: Zoom interattivo a tutto schermo, didascalia completa e chiusura rapida) -->
+  <!-- LIGHTBOX MODAL -->
   <div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-[#0c0c0b]/95 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 lg:p-10 overflow-y-auto">
-    
-    <!-- Pulsante Chiusura Esterno Rapido sul Backdrop -->
-    <button id="backdrop-close-btn" type="button" aria-label="Chiudi Finestra" class="fixed top-4 right-4 z-50 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors cursor-pointer" title="Chiudi (Esc o clicca fuori)">
-      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-      </svg>
+    <button id="backdrop-close-btn" type="button" aria-label="Chiudi" class="fixed top-4 right-4 z-50 text-white/70 hover:text-white p-2 rounded-full cursor-pointer">
+      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
     </button>
-
     <div id="modal-dialog" class="relative max-w-6xl w-full bg-gallery-canvas border border-gallery-border/30 my-auto shadow-2xl flex flex-col lg:flex-row max-h-[92vh] overflow-hidden" onclick="event.stopPropagation()">
-      
-      <!-- Pulsante Chiusura Interno (X) -->
-      <button id="modal-close-btn" type="button" aria-label="Chiudi Scheda" class="absolute top-4 right-4 z-30 w-10 h-10 flex items-center justify-center text-gallery-deep bg-gallery-canvas/90 border border-gallery-border hover:bg-gallery-deep hover:text-gallery-canvas transition-colors shadow-sm cursor-pointer" title="Chiudi (Esc)">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+      <button id="modal-close-btn" type="button" class="absolute top-4 right-4 z-30 w-10 h-10 flex items-center justify-center text-gallery-deep bg-gallery-canvas/90 border border-gallery-border cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <button id="modal-prev-btn" type="button" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center text-gallery-deep bg-gallery-canvas/80 border border-gallery-border">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <button id="modal-next-btn" type="button" class="absolute right-4 top-1/2 -translate-y-1/2 lg:right-[420px] z-20 w-10 h-10 flex items-center justify-center text-gallery-deep bg-gallery-canvas/80 border border-gallery-border">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"/></svg>
       </button>
 
-      <!-- Navigazione Opera Precedente -->
-      <button id="modal-prev-btn" type="button" aria-label="Opera Precedente" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 flex items-center justify-center text-gallery-deep bg-gallery-canvas/80 border border-gallery-border hover:bg-gallery-deep hover:text-gallery-canvas transition-colors shadow-sm" title="Precedente (Freccia Sinistra)">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-
-      <!-- Navigazione Opera Successiva -->
-      <button id="modal-next-btn" type="button" aria-label="Opera Successiva" class="absolute right-4 top-1/2 -translate-y-1/2 lg:right-[420px] z-20 w-10 h-10 flex items-center justify-center text-gallery-deep bg-gallery-canvas/80 border border-gallery-border hover:bg-gallery-deep hover:text-gallery-canvas transition-colors shadow-sm" title="Successiva (Freccia Destra)">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
-
-      <!-- Area Immagine con Zoom Fluido Interattivo (Click per zoommare e pan con il mouse) -->
       <div id="modal-image-container" class="relative lg:flex-1 bg-gallery-canvas flex items-center justify-center p-4 sm:p-6 lg:p-8 overflow-hidden min-h-[380px] lg:min-h-[580px] cursor-zoom-in select-none">
-        
-        <img 
-          id="modal-image" 
-          src="" 
-          alt="" 
-          class="max-h-[72vh] w-auto max-w-full object-contain transition-transform duration-300 ease-out origin-center drop-shadow-sm"
-        />
-
-        <!-- Controlli Zoom Rapidi in sovraimpressione discreta -->
-        <div class="absolute top-4 left-4 z-20 flex items-center gap-2">
-          <button 
-            id="modal-zoom-btn" 
-            type="button" 
-            class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gallery-canvas/90 backdrop-blur-md border border-gallery-border text-[10px] uppercase tracking-widest text-gallery-deep hover:bg-gallery-deep hover:text-gallery-canvas transition-colors shadow-sm font-medium"
-            title="Ingrandisci dettagli (o clicca direttamente sul dipinto)"
-          >
-            <svg id="zoom-icon-in" class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-            </svg>
-            <svg id="zoom-icon-out" class="w-3.5 h-3.5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
-            </svg>
-            <span id="zoom-btn-label">Zoom Dettagli</span>
-          </button>
-        </div>
-
-        <!-- Indicatore di zoom interattivo / suggerimento -->
-        <div id="zoom-hint-badge" class="absolute bottom-4 left-4 z-10 pointer-events-none flex items-center gap-2 bg-gallery-deep/80 text-gallery-canvas text-[9px] uppercase tracking-widest px-3 py-1.5 backdrop-blur-sm transition-opacity duration-300">
-          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
-          </svg>
-          <span id="zoom-hint-text">Clicca per zoommare i dettagli</span>
+        <img id="modal-image" src="" alt="" class="max-h-[72vh] w-auto max-w-full object-contain transition-transform duration-300 ease-out origin-center drop-shadow-sm"/>
+        <div class="absolute top-4 left-4 z-20">
+          <button id="modal-zoom-btn" type="button" class="px-3 py-1.5 bg-gallery-canvas/90 border border-gallery-border text-[10px] uppercase tracking-widest text-gallery-deep font-medium">Zoom Dettagli</button>
         </div>
       </div>
 
-      <!-- Didascalia Completa e Scheda Tecnica -->
       <div class="w-full lg:w-[400px] p-8 sm:p-10 flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-gallery-border overflow-y-auto bg-gallery-canvas">
         <div class="space-y-6">
           <div>
             <span id="modal-category" class="text-[10px] uppercase tracking-[0.25em] text-gallery-muted font-mono block mb-2">PITTURA</span>
-            <h3 id="modal-title" class="font-serif text-3xl sm:text-4xl text-gallery-deep italic font-medium leading-tight">Titolo dell'Opera</h3>
+            <h3 id="modal-title" class="font-serif text-3xl sm:text-4xl text-gallery-deep italic font-medium leading-tight">Titolo</h3>
             <p id="modal-year" class="text-xs text-gallery-muted font-sans mt-1">2026</p>
           </div>
-
           <div class="space-y-3 pt-4 border-t border-gallery-border text-xs font-sans">
-            <div>
-              <span class="text-gallery-muted uppercase tracking-wider block text-[10px]">Tecnica &amp; Supporto</span>
-              <span id="modal-medium" class="text-gallery-deep font-medium text-sm mt-0.5 block">Olio su tela</span>
-            </div>
-            <div>
-              <span class="text-gallery-muted uppercase tracking-wider block text-[10px]">Dimensioni</span>
-              <span id="modal-dimensions" class="text-gallery-deep font-medium text-sm mt-0.5 block">100x120 cm</span>
-            </div>
-            <div>
-              <span class="text-gallery-muted uppercase tracking-wider block text-[10px]">Autrice</span>
-              <span class="text-gallery-deep font-medium text-sm mt-0.5 block">Lisa Giulia Saccuta</span>
-            </div>
+            <div><span class="text-gallery-muted uppercase tracking-wider block text-[10px]">Tecnica</span><span id="modal-medium" class="text-gallery-deep font-medium text-sm mt-0.5 block">Olio su tela</span></div>
+            <div><span class="text-gallery-muted uppercase tracking-wider block text-[10px]">Dimensioni</span><span id="modal-dimensions" class="text-gallery-deep font-medium text-sm mt-0.5 block">100x120 cm</span></div>
           </div>
-
           <div class="pt-4 border-t border-gallery-border">
-            <span class="text-gallery-muted uppercase tracking-wider block text-[10px] mb-1.5">Nota Descrittiva</span>
-            <p id="modal-description" class="text-xs text-gallery-secondary font-sans leading-relaxed">
-              Descrizione dell'opera.
-            </p>
+            <p id="modal-description" class="text-xs text-gallery-secondary font-sans leading-relaxed">Descrizione</p>
           </div>
-        </div>
-
-        <div class="pt-8 mt-6 border-t border-gallery-border">
-          <button 
-            id="modal-inquire-btn" 
-            type="button" 
-            class="w-full text-xs uppercase tracking-[0.2em] bg-gallery-deep text-gallery-canvas py-3.5 hover:bg-gallery-secondary transition-colors text-center cursor-pointer"
-          >
-            Richiedi Informazioni per quest'opera
-          </button>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- JAVASCRIPT: Dataset Opere Reali dal PDF, Filtri & Rendering Pulito -->
   <script>
-    // Tutte le 17 opere pittoriche provengono direttamente dal PDF ufficiale allegato, con immagini reali estratte.
-    // Fotografia e Sound Art (o opere d'archivio senza immagine) sono schede testuali pulite (isTextBlock: true), senza tag img né box vuoti.
     const artworks = [
-      // 1. Dal PDF (Pagina 4)
-      {
-        id: "nel-nome-di",
-        title: "Nel nome di",
-        year: "2026",
-        category: "pittura",
-        medium: "Olio su tela",
-        dimensions: "Archivio",
-        image: "images/nel_nome_di.jpg",
-        description: "Campitura cerulea solcata da una fenditura vermiglia; un frammento di volto dorato con lacrime votive emerge nella purezza del colore.",
-        colSpan: "lg:col-span-6",
-        aspect: "aspect-[3/4]"
-      },
-      // 2. Dal PDF (Pagina 5)
-      {
-        id: "muddy-sweet",
-        title: "Muddy n’ sweet",
-        year: "2026",
-        category: "pittura",
-        medium: "Olio su tela",
-        dimensions: "Archivio",
-        image: "images/muddy_n_sweet.jpg",
-        description: "Visione acquatica e vegetale in cui un volto dalle lenti celesti affiora tra velature smeraldo e pigmenti verdi acidi.",
-        colSpan: "lg:col-span-6",
-        aspect: "aspect-[3/4]"
-      },
-      // 3. Dal PDF (Pagina 6)
-      {
-        id: "mariam-per-yair",
-        title: "Mariam per Yair",
-        year: "2026",
-        category: "pittura",
-        medium: "Olio su tela",
-        dimensions: "30x40 cm",
-        image: "images/mariam_per_yair.jpg",
-        description: "Figura reclinata dal pathos espressionista, con lacrima perlacea che fende il chiaroscuro cobalto.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[3/4]"
-      },
-      // 4. Dal PDF (Pagina 7)
-      {
-        id: "vincitrice-sul-fallo",
-        title: "Vincitrice sul fallo (Gorgone)",
-        year: "2026",
-        category: "pittura",
-        medium: "Olio su tela",
-        dimensions: "50x50 cm",
-        image: "images/vincitrice_sul_fallo.jpg",
-        description: "Rielaborazione radicale del mito della Gorgone. La figura arcaica si riappropria del potere generatore e trionfa nella luce solare.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[1/1]"
-      },
-      // 5. Dal PDF (Pagina 8)
-      {
-        id: "uomo-che-piange",
-        title: "Uomo che piange",
-        year: "2026",
-        category: "pittura",
-        medium: "Tecnica Mista (olio, spray acrilico e collage)",
-        dimensions: "30x40 cm",
-        image: "images/uomochepiange.jpg",
-        description: "Sintesi grafica di segno e pittura a olio, attraversata da gocce e campiture monocrome blu notte.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[3/4]"
-      },
-      // 6. Dal PDF (Pagina 9)
-      {
-        id: "come-tu-mi-vuoi",
-        title: "Come tu mi vuoi (San Giorgio e il drago)",
-        year: "2026",
-        category: "pittura",
-        medium: "Olio su tela",
-        dimensions: "35x50 cm",
-        image: "images/come_tu_mi_vuoi.jpg",
-        description: "Iconografia cavalleresca sovvertita: il santo guerriero e la belva fauciata condividono una stessa tensione drammatica.",
-        colSpan: "lg:col-span-6",
-        aspect: "aspect-[7/10]"
-      },
-      // 7. Dal PDF (Pagina 10)
-      {
-        id: "pensieri-intrusivi",
-        title: "Pensieri Intrusivi",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su compensato",
-        dimensions: "30x27 cm",
-        image: "images/pensieri_intrusivi.jpg",
-        description: "Intimità psicologica su piccolo formato: un volto argenteo e sospeso dialoga con le fronde notturne e le luci industriali.",
-        colSpan: "lg:col-span-6",
-        aspect: "aspect-[1/1]"
-      },
-      // 8. Dal PDF (Pagina 11)
-      {
-        id: "falsi-dei",
-        title: "Falsi Dei",
-        year: "2025",
-        category: "pittura",
-        medium: "Tecnica mista; Olio su tela (2022) e collage",
-        dimensions: "70x100 cm",
-        image: "images/falsi_dei.jpg",
-        description: "Una sedia solitaria sulla battigia di fronte all'orizzonte marino, interrotta dall'ironico prompt digitale di saturazione testuale.",
-        colSpan: "lg:col-span-6",
-        aspect: "aspect-[7/10]"
-      },
-      // 9. Dal PDF (Pagina 12)
-      {
-        id: "casa-di-paglia",
-        title: "Nascosti senza dubbi nella casa di paglia, il Lupo attende",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "25x35 cm",
-        image: "images/casa_di_paglia.jpg",
-        description: "La fiaba infantile trapiantata nel paesaggio siciliano dominato da tralicci dell'alta tensione e maschere enigmatiche.",
-        colSpan: "lg:col-span-6",
-        aspect: "aspect-[5/7]"
-      },
-      // 10. Dal PDF (Pagina 13)
-      {
-        id: "strumenti-futili",
-        title: "Strumenti Futili",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "80x120 cm",
-        image: "images/strumenti_futili.png",
-        description: "Una presenza vegetale e boschiva siede all'ingresso di un cinema d'epoca, con un coccodrillo nero disteso sul pavimento geometrico.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[2/3]"
-      },
-      // 11. Dal PDF (Pagina 14)
-      {
-        id: "ierofante",
-        title: "Ierofante",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "70x100 cm",
-        image: "images/ierofante.png",
-        description: "Figura sacrale distesa in una teca trasparente sorretta da mani nere protese, in un contrasto potente tra vermiglio e ciano.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[10/7]"
-      },
-      // 12. Dal PDF (Pagina 15)
-      {
-        id: "tagghiala",
-        title: "Tagghiala!",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "50x50 cm",
-        image: "images/tagghiala.jpg",
-        description: "Dall'imperativo siciliano 'tagliala!'. Mani scultoree impugnano cesoie d'acciaio su dadi e drappi turchesi.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[1/1]"
-      },
-      // 13. Dal PDF (Pagina 16)
-      {
-        id: "kursuf",
-        title: "ḵuršūf",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "70x100 cm",
-        image: "images/kursuf.jpg",
-        description: "Il carciofo selvatico (termine arabo-siculo) come archetipo di tenacia vegetale e memoria ancestrale della terra madre.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[7/10]"
-      },
-      // 14. Dal PDF (Pagina 17)
-      {
-        id: "betlemme",
-        title: "Betlemme",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "50x70 cm",
-        image: "images/betlemme.jpg",
-        description: "Giovane figura che stringe canarini legati a fili sottili, avvolta da un'entità velata e da intense tonalità verde smeraldo.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[5/7]"
-      },
-      // 15. Dal PDF (Pagina 18)
-      {
-        id: "raqama",
-        title: "Raqama",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "100x120 cm",
-        image: "images/raqama.jpg",
-        description: "Dall'arabo 'ricamare': anziana matrona che tesse un pizzo vermiglio contro un fondo giallo acido. Tributo alla memoria femminile.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[5/6]"
-      },
-      // 16. Dal PDF (Pagina 19)
-      {
-        id: "bonobo-dream",
-        title: "Bonobo Dream in a Feminist Utopia",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "15x20 cm",
-        image: "images/bonobo_dream.jpg",
-        description: "Micro-formato: il primate bonobo, simbolo di società matriarcale pacifica, immerso in una fitta vegetazione cobalto e cremisi.",
-        colSpan: "lg:col-span-4",
-        aspect: "aspect-[3/4]"
-      },
-      // 17. Dal PDF (Pagina 20)
-      {
-        id: "girl-so-confusing",
-        title: "Girl, So Confusing (Sogno)",
-        year: "2025",
-        category: "pittura",
-        medium: "Olio su Tela",
-        dimensions: "50x70 cm",
-        image: "images/girl_so_confusing.jpg",
-        description: "Dialogo tra cultura pop contemporanea ('brat') e maschera onirica: mani possenti sospese su ampolle e campiture verde acido.",
-        colSpan: "lg:col-span-8",
-        aspect: "aspect-[7/5]"
-      },
-
-      // FOTOGRAFIA: Scheda Testuale Pulita senza tag immagine né box vuoti
-      {
-        id: "dove-habitat-immaginario",
-        title: "Mostra Fotografica \"Dove Habitat L'immaginario\"",
-        year: "2020",
-        category: "fotografia",
-        medium: "Reportage Fotografico & Ricerca Territoriale",
-        dimensions: "Youth Center Macchitella, Gela · In partnership con Ass. Mediterranean Planners",
-        isTextBlock: true,
-        url: "https://percorsiconibambini.it/youthcity/2020/02/04/a-gela-la-prima-mostra-dove-habitat-limmagginario-e-un-successo-adolescenti-raccontano-la-citta/",
-        urlLabel: "Leggi la documentazione ufficiale della mostra",
-        description: "Indagine fotografica documentaria sul litorale e l'archeologia post-industriale della piana di Gela. La luce calda mediterranea rivela sentieri, ruderi e figure umane solitarie, restituendo una narrazione visiva partecipata della città attraverso oltre 150 scatti esposti.",
-        colSpan: "lg:col-span-6"
-      },
-
-      // SOUND ART: Scheda Testuale Pulita senza tag immagine né box vuoti
-      {
-        id: "sound-art-mpds",
-        title: "Sound Art / MPDS Audio Archive & RE-SOUNDSCAPE",
-        year: "2024",
-        category: "sound-art",
-        medium: "Composizione Sonora Sperimentale",
-        dimensions: "In collaborazione con Radio Ciroma e RAM Radioartemobile",
-        isTextBlock: true,
-        url: "https://www.mpdsaudioarchive.org/suoni/4-ronald-dump-lisa-saccuta/",
-        urlLabel: "Ascolta la traccia su MPDS Audio Archive",
-        description: "Progetto di ricerca sonora dedicato all'indagine acustica ambientale e alla stratificazione delle frequenze del territorio siciliano. Traccia sonora documentaria archiviata ufficialmente nel catalogo sonoro internazionale di MPDS Audio Archive.",
-        colSpan: "lg:col-span-6"
-      }
+      { id: "nel-nome-di", title: "Nel nome di", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "Archivio", image: "public/assets/aistudio/images/nel_nome_di.jpg", description: "Campitura cerulea solcata da una fenditura vermiglia.", colSpan: "lg:col-span-6", aspect: "aspect-[3/4]" },
+      { id: "muddy-sweet", title: "Muddy n’ sweet", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "Archivio", image: "public/assets/aistudio/images/muddy_n_sweet.jpg", description: "Visione acquatica e vegetale.", colSpan: "lg:col-span-6", aspect: "aspect-[3/4]" },
+      { id: "mariam-per-yair", title: "Mariam per Yair", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "30x40 cm", image: "public/assets/aistudio/images/mariam_per_yair.jpg", description: "Figura reclinata dal pathos espressionista.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
+      { id: "vincitrice-sul-fallo", title: "Vincitrice sul fallo (Gorgone)", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "50x50 cm", image: "public/assets/aistudio/images/vincitrice_sul_fallo.jpg", description: "Rielaborazione radicale del mito della Gorgone.", colSpan: "lg:col-span-4", aspect: "aspect-[1/1]" },
+      { id: "uomo-che-piange", title: "Uomo che piange", year: "2026", category: "pittura", medium: "Tecnica Mista", dimensions: "30x40 cm", image: "public/assets/aistudio/images/uomochepiange.jpg", description: "Sintesi grafica di segno e pittura a olio.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
+      { id: "come-tu-mi-vuoi", title: "Come tu mi vuoi (San Giorgio e il drago)", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "35x50 cm", image: "public/assets/aistudio/images/come_tu_mi_vuoi.jpg", description: "Iconografia cavalleresca sovvertita.", colSpan: "lg:col-span-6", aspect: "aspect-[7/10]" },
+      { id: "pensieri-intrusivi", title: "Pensieri Intrusivi", year: "2025", category: "pittura", medium: "Olio su compensato", dimensions: "30x27 cm", image: "public/assets/aistudio/images/pensieri_intrusivi.jpg", description: "Intimità psicologica su piccolo formato.", colSpan: "lg:col-span-6", aspect: "aspect-[1/1]" },
+      { id: "falsi-dei", title: "Falsi Dei", year: "2025", category: "pittura", medium: "Olio su tela", dimensions: "70x100 cm", image: "public/assets/aistudio/images/falsi_dei.jpg", description: "Sedia solitaria sulla battigia.", colSpan: "lg:col-span-6", aspect: "aspect-[7/10]" },
+      { id: "casa-di-paglia", title: "Nascosti senza dubbi nella casa di paglia", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "25x35 cm", image: "public/assets/aistudio/images/casa_di_paglia.jpg", description: "La fiaba infantile nel paesaggio siciliano.", colSpan: "lg:col-span-6", aspect: "aspect-[5/7]" },
+      { id: "strumenti-futili", title: "Strumenti Futili", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "80x120 cm", image: "public/assets/aistudio/images/strumenti_futili.png", description: "Presenza vegetale all'ingresso di un cinema.", colSpan: "lg:col-span-4", aspect: "aspect-[2/3]" },
+      { id: "ierofante", title: "Ierofante", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "70x100 cm", image: "public/assets/aistudio/images/ierofante.png", description: "Figura sacrale distesa in una teca.", colSpan: "lg:col-span-4", aspect: "aspect-[10/7]" },
+      { id: "tagghiala", title: "Tagghiala!", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x50 cm", image: "public/assets/aistudio/images/tagghiala.jpg", description: "Mani scultoree impugnano cesoie d'acciaio.", colSpan: "lg:col-span-4", aspect: "aspect-[1/1]" },
+      { id: "kursuf", title: "ḵuršūf", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "70x100 cm", image: "public/assets/aistudio/images/kursuf.jpg", description: "Il carciofo selvatico come archetipo.", colSpan: "lg:col-span-4", aspect: "aspect-[7/10]" },
+      { id: "betlemme", title: "Betlemme", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x70 cm", image: "public/assets/aistudio/images/betlemme.jpg", description: "Giovane figura che stringe canarini.", colSpan: "lg:col-span-4", aspect: "aspect-[5/7]" },
+      { id: "raqama", title: "Raqama", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "100x120 cm", image: "public/assets/aistudio/images/raqama.jpg", description: "Anziana matrona che tesse un pizzo vermiglio.", colSpan: "lg:col-span-4", aspect: "aspect-[5/6]" },
+      { id: "bonobo-dream", title: "Bonobo Dream in a Feminist Utopia", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "15x20 cm", image: "public/assets/aistudio/images/bonobo_dream.jpg", description: "Il primate bonobo in fitta vegetazione.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
+      { id: "girl-so-confusing", title: "Girl, So Confusing (Sogno)", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x70 cm", image: "public/assets/aistudio/images/girl_so_confusing.jpg", description: "Dialogo tra cultura pop e maschera onirica.", colSpan: "lg:col-span-8", aspect: "aspect-[7/5]" },
+      { id: "dove-habitat-immaginario", title: "Mostra Fotografica \"Dove Habitat L'immaginario\"", year: "2020", category: "fotografia", medium: "Reportage Fotografico", dimensions: "Youth Center Macchitella", isTextBlock: true, url: "https://percorsiconibambini.it/youthcity/2020/02/04/a-gela-la-prima-mostra-dove-habitat-limmagginario-e-un-successo-adolescenti-raccontano-la-citta/", urlLabel: "Leggi documentazione", description: "Indagine fotografica documentaria sul litorale e l'archeologia post-industriale.", colSpan: "lg:col-span-6" },
+      { id: "sound-art-mpds", title: "Sound Art / MPDS Audio Archive", year: "2024", category: "sound-art", medium: "Composizione Sonora", dimensions: "Radio Ciroma / RAM", isTextBlock: true, url: "https://www.mpdsaudioarchive.org/suoni/4-ronald-dump-lisa-saccuta/", urlLabel: "Ascolta traccia", description: "Progetto di ricerca sonora dedicato all'indagine acustica ambientale.", colSpan: "lg:col-span-6" }
     ];
 
     let currentFilter = 'all';
     let currentModalIndex = 0;
-    let filteredArtworks = [...artworks];
     let paintingArtworks = artworks.filter(a => !a.isTextBlock);
 
-    // Aggiorna conteggi dei filtri
     function updateCounts() {
       document.getElementById('count-all').textContent = artworks.length;
       document.getElementById('count-pittura').textContent = artworks.filter(a => a.category === 'pittura').length;
@@ -1008,336 +421,104 @@
       document.getElementById('count-sound').textContent = artworks.filter(a => a.category === 'sound-art').length;
     }
 
-    // Render della galleria opere
     function renderGallery() {
       const grid = document.getElementById('artworks-grid');
       const emptyState = document.getElementById('empty-state');
       grid.innerHTML = '';
+      const list = currentFilter === 'all' ? artworks : artworks.filter(a => a.category === currentFilter);
 
-      filteredArtworks = currentFilter === 'all' 
-        ? artworks 
-        : artworks.filter(a => a.category === currentFilter);
+      if (list.length === 0) { emptyState.classList.remove('hidden'); return; }
+      else { emptyState.classList.add('hidden'); }
 
-      if (filteredArtworks.length === 0) {
-        emptyState.classList.remove('hidden');
-        return;
-      } else {
-        emptyState.classList.add('hidden');
-      }
-
-      filteredArtworks.forEach((art) => {
+      list.forEach((art) => {
         const card = document.createElement('article');
         card.className = `${art.colSpan || 'lg:col-span-6'} flex flex-col`;
 
-        // Se l'opera non ha immagine o è Fotografia/Sound Art: NESSUN tag immagine né box vuoto!
-        if (art.isTextBlock || !art.image) {
+        if (art.isTextBlock) {
           card.className += ' h-full';
           card.innerHTML = `
             <div class="h-full bg-gallery-surface border border-gallery-border p-8 sm:p-10 flex flex-col justify-between hover:border-gallery-deep transition-all duration-300">
               <div>
                 <div class="flex items-center justify-between gap-4 mb-4">
-                  <span class="text-[10px] uppercase tracking-[0.25em] text-gallery-muted font-mono font-medium">
-                    ${art.category === 'fotografia' ? 'Fotografia / Mostra' : (art.category === 'sound-art' ? 'Sound Art / Ricerca Sonora' : 'Archivio Opere')}
-                  </span>
-                  <span class="text-xs text-gallery-muted font-sans tabular-nums">${art.year}</span>
+                  <span class="text-[10px] uppercase tracking-[0.25em] text-gallery-muted font-mono font-medium">${art.category.toUpperCase()}</span>
+                  <span class="text-xs text-gallery-muted font-sans">${art.year}</span>
                 </div>
-                <h3 class="font-serif text-2xl sm:text-3xl text-gallery-deep italic font-medium leading-tight mb-3">
-                  ${art.title}
-                </h3>
-                <p class="text-xs uppercase tracking-wider text-gallery-muted font-sans mb-5">
-                  ${art.medium} · ${art.dimensions}
-                </p>
-                <p class="text-sm text-gallery-secondary font-sans leading-relaxed">
-                  ${art.description}
-                </p>
+                <h3 class="font-serif text-2xl sm:text-3xl text-gallery-deep italic font-medium mb-3">${art.title}</h3>
+                <p class="text-xs uppercase tracking-wider text-gallery-muted font-sans mb-5">${art.medium} · ${art.dimensions}</p>
+                <p class="text-sm text-gallery-secondary font-sans leading-relaxed">${art.description}</p>
               </div>
-
-              ${art.url ? `
-                <div class="pt-8 mt-8 border-t border-gallery-border/80">
-                  <a 
-                    href="${art.url}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gallery-deep font-medium border border-gallery-deep/30 px-4 py-2.5 hover:bg-gallery-deep hover:text-gallery-canvas hover:border-gallery-deep transition-all duration-200"
-                  >
-                    <span>${art.urlLabel || 'Approfondisci'}</span>
-                    <span>↗</span>
-                  </a>
-                </div>
-              ` : ''}
-            </div>
-          `;
+              ${art.url ? `<div class="pt-8 mt-8 border-t border-gallery-border/80"><a href="${art.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gallery-deep font-medium border border-gallery-deep/30 px-4 py-2.5 hover:bg-gallery-deep hover:text-gallery-canvas transition-all"><span>${art.urlLabel}</span><span>↗</span></a></div>` : ''}
+            </div>`;
         } else {
-          // Opera Pittorica: Scheda d'arte con immagine reale estratta dal PDF
           card.className += ' artwork-card group cursor-pointer';
-          card.setAttribute('role', 'button');
-          card.setAttribute('tabindex', '0');
-          card.setAttribute('aria-label', `Visualizza ${art.title}`);
-
           card.innerHTML = `
             <div class="relative w-full ${art.aspect || 'aspect-[4/5]'} bg-transparent overflow-hidden flex items-center justify-center">
-              <img 
-                src="${art.image}" 
-                alt="${art.title} — ${art.medium}, ${art.year}" 
-                loading="lazy" 
-                class="artwork-img w-full h-full object-contain"
-              />
-              <div class="absolute inset-0 bg-gallery-deep/0 group-hover:bg-gallery-deep/5 transition-colors duration-300 pointer-events-none"></div>
-              <div class="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span class="bg-gallery-canvas/95 text-gallery-deep border border-gallery-border text-[9px] uppercase tracking-widest px-2.5 py-1 font-medium shadow-sm">
-                  Visualizza Scheda
-                </span>
-              </div>
+              <img src="${art.image}" alt="${art.title}" loading="lazy" class="artwork-img w-full h-full object-contain"/>
+              <div class="absolute inset-0 bg-gallery-deep/0 group-hover:bg-gallery-deep/5 transition-colors"></div>
             </div>
-
             <div class="pt-4 flex flex-col space-y-1">
               <div class="flex items-baseline justify-between gap-4">
-                <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic font-medium group-hover:text-gallery-secondary transition-colors">
-                  ${art.title}
-                </h3>
-                <span class="text-xs text-gallery-muted font-sans tabular-nums shrink-0">${art.year}</span>
+                <h3 class="font-serif text-xl sm:text-2xl text-gallery-deep italic font-medium">${art.title}</h3>
+                <span class="text-xs text-gallery-muted font-sans">${art.year}</span>
               </div>
-              <p class="text-xs text-gallery-muted font-sans tracking-wide">
-                ${art.medium} · ${art.dimensions}
-              </p>
-            </div>
-          `;
-
-          const paintingIndex = paintingArtworks.findIndex(p => p.id === art.id);
-          card.addEventListener('click', () => openModal(paintingIndex));
-          card.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              openModal(paintingIndex);
-            }
-          });
+              <p class="text-xs text-gallery-muted font-sans">${art.medium} · ${art.dimensions}</p>
+            </div>`;
+          const pIndex = paintingArtworks.findIndex(p => p.id === art.id);
+          card.addEventListener('click', () => openModal(pIndex));
         }
-
         grid.appendChild(card);
       });
     }
 
-    // Gestione pulsanti filtro categoria
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('active', 'text-gallery-deep', 'border-gallery-deep');
-          b.classList.add('text-gallery-muted', 'border-transparent');
-        });
+        document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('active', 'text-gallery-deep', 'border-gallery-deep'); b.classList.add('text-gallery-muted', 'border-transparent'); });
         btn.classList.add('active', 'text-gallery-deep', 'border-gallery-deep');
-        btn.classList.remove('text-gallery-muted', 'border-transparent');
         currentFilter = btn.dataset.filter;
         renderGallery();
       });
     });
 
-    // Lightbox Modal con Zoom Interattivo e Navigazione Fluida
     const modal = document.getElementById('lightbox-modal');
-    const modalDialog = document.getElementById('modal-dialog');
-    const modalImageContainer = document.getElementById('modal-image-container');
     const modalImage = document.getElementById('modal-image');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalYear = document.getElementById('modal-year');
-    const modalMedium = document.getElementById('modal-medium');
-    const modalDimensions = document.getElementById('modal-dimensions');
-    const modalDescription = document.getElementById('modal-description');
-    const modalInquireBtn = document.getElementById('modal-inquire-btn');
-    const modalZoomBtn = document.getElementById('modal-zoom-btn');
-    const zoomIconIn = document.getElementById('zoom-icon-in');
-    const zoomIconOut = document.getElementById('zoom-icon-out');
-    const zoomBtnLabel = document.getElementById('zoom-btn-label');
-    const zoomHintBadge = document.getElementById('zoom-hint-badge');
-    const zoomHintText = document.getElementById('zoom-hint-text');
-
     let isZoomed = false;
 
-    function resetZoom() {
-      isZoomed = false;
-      if (modalImage) {
-        modalImage.style.transform = 'scale(1)';
-        modalImage.style.transformOrigin = 'center center';
-      }
-      if (modalImageContainer) {
-        modalImageContainer.classList.remove('cursor-zoom-out');
-        modalImageContainer.classList.add('cursor-zoom-in');
-      }
-      if (zoomIconIn) zoomIconIn.classList.remove('hidden');
-      if (zoomIconOut) zoomIconOut.classList.add('hidden');
-      if (zoomBtnLabel) zoomBtnLabel.textContent = 'Zoom Dettagli';
-      if (zoomHintText) zoomHintText.textContent = 'Clicca per zoommare i dettagli';
-    }
-
-    function toggleZoom(e) {
-      isZoomed = !isZoomed;
-      if (isZoomed) {
-        if (e && e.clientX && modalImageContainer) {
-          const rect = modalImageContainer.getBoundingClientRect();
-          const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-          const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
-          modalImage.style.transformOrigin = `${x}% ${y}%`;
-        } else {
-          modalImage.style.transformOrigin = 'center center';
-        }
-        modalImage.style.transform = 'scale(2.2)';
-        modalImageContainer.classList.remove('cursor-zoom-in');
-        modalImageContainer.classList.add('cursor-zoom-out');
-        if (zoomIconIn) zoomIconIn.classList.add('hidden');
-        if (zoomIconOut) zoomIconOut.classList.remove('hidden');
-        if (zoomBtnLabel) zoomBtnLabel.textContent = 'Ripristina';
-        if (zoomHintText) zoomHintText.textContent = 'Clicca per ridurre';
-      } else {
-        resetZoom();
-      }
-    }
-
-    // Pan dinamico sul dipinto durante lo zoom
-    if (modalImageContainer) {
-      modalImageContainer.addEventListener('mousemove', (e) => {
-        if (!isZoomed) return;
-        const rect = modalImageContainer.getBoundingClientRect();
-        const x = Math.max(0, Math.min(100, ((e.clientX - rect.left) / rect.width) * 100));
-        const y = Math.max(0, Math.min(100, ((e.clientY - rect.top) / rect.height) * 100));
-        modalImage.style.transformOrigin = `${x}% ${y}%`;
-      });
-
-      // Clicca direttamente sull'immagine per zoommare
-      modalImageContainer.addEventListener('click', (e) => {
-        if (e.target.closest('button')) return;
-        toggleZoom(e);
-      });
-    }
-
-    // Pulsante Zoom
-    if (modalZoomBtn) {
-      modalZoomBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        toggleZoom();
-      });
-    }
-
-    function openModal(index) {
-      if (index < 0 || index >= paintingArtworks.length) return;
-      currentModalIndex = index;
-      resetZoom();
-      updateModalContent();
+    function openModal(idx) {
+      currentModalIndex = idx;
+      updateModal();
       modal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
     }
-
     function closeModal() {
-      resetZoom();
       modal.classList.add('hidden');
       document.body.style.overflow = '';
     }
-
-    function updateModalContent() {
+    function updateModal() {
       const art = paintingArtworks[currentModalIndex];
-      if (!art) return;
-
-      modalImage.style.opacity = '0';
-      setTimeout(() => {
-        modalImage.src = art.image;
-        modalImage.alt = art.title;
-        modalImage.style.opacity = '1';
-      }, 120);
-
-      modalTitle.textContent = art.title;
-      modalCategory.textContent = art.category.toUpperCase();
-      modalYear.textContent = art.year;
-      modalMedium.textContent = art.medium;
-      modalDimensions.textContent = art.dimensions;
-      modalDescription.textContent = art.description;
-
-      modalInquireBtn.onclick = () => {
-        closeModal();
-        const subjectSelect = document.getElementById('subject');
-        const messageTextarea = document.getElementById('message');
-        if (subjectSelect) subjectSelect.value = 'acquisition';
-        if (messageTextarea) {
-          messageTextarea.value = `Gentile Lisa Giulia Saccuta,\nDesidero richiedere maggiori informazioni in merito alla disponibilità e all'acquisizione dell'opera:\n«${art.title}» (${art.year}, ${art.medium}, ${art.dimensions}).\n\nCordiali saluti,`;
-        }
-        const contactSection = document.getElementById('contatti');
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: 'smooth' });
-          setTimeout(() => messageTextarea.focus(), 600);
-        }
-      };
-    }
-
-    function prevModal() {
-      resetZoom();
-      currentModalIndex = (currentModalIndex - 1 + paintingArtworks.length) % paintingArtworks.length;
-      updateModalContent();
-    }
-
-    function nextModal() {
-      resetZoom();
-      currentModalIndex = (currentModalIndex + 1) % paintingArtworks.length;
-      updateModalContent();
+      modalImage.src = art.image;
+      document.getElementById('modal-title').textContent = art.title;
+      document.getElementById('modal-year').textContent = art.year;
+      document.getElementById('modal-medium').textContent = art.medium;
+      document.getElementById('modal-dimensions').textContent = art.dimensions;
+      document.getElementById('modal-description').textContent = art.description;
     }
 
     document.getElementById('modal-close-btn').addEventListener('click', closeModal);
-    const backdropCloseBtn = document.getElementById('backdrop-close-btn');
-    if (backdropCloseBtn) backdropCloseBtn.addEventListener('click', closeModal);
-    document.getElementById('modal-prev-btn').addEventListener('click', prevModal);
-    document.getElementById('modal-next-btn').addEventListener('click', nextModal);
+    document.getElementById('backdrop-close-btn').addEventListener('click', closeModal);
+    document.getElementById('modal-prev-btn').addEventListener('click', () => { currentModalIndex = (currentModalIndex - 1 + paintingArtworks.length) % paintingArtworks.length; updateModal(); });
+    document.getElementById('modal-next-btn').addEventListener('click', () => { currentModalIndex = (currentModalIndex + 1) % paintingArtworks.length; updateModal(); });
     
-    // Chiusura al click fuori dal contenuto (sul backdrop)
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal || (modalDialog && !modalDialog.contains(e.target))) {
-        closeModal();
-      }
+    document.getElementById('modal-zoom-btn').addEventListener('click', () => {
+      isZoomed = !isZoomed;
+      modalImage.style.transform = isZoomed ? 'scale(2)' : 'scale(1)';
+      document.getElementById('modal-zoom-btn').textContent = isZoomed ? 'Ripristina' : 'Zoom Dettagli';
     });
 
-    // Supporto tastiera (Esc, Frecce)
-    window.addEventListener('keydown', (e) => {
-      if (!modal.classList.contains('hidden')) {
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft') prevModal();
-        if (e.key === 'ArrowRight') nextModal();
-      }
+    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
     });
 
-    // Menu Mobile: chiusura automatica al click
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Modulo di Contatto
-    const contactForm = document.getElementById('contact-form');
-    const formFeedback = document.getElementById('form-feedback');
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Invio in corso...';
-
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Messaggio Inviato';
-        formFeedback.textContent = 'Grazie. Il messaggio è stato inoltrato allo studio di Lisa Giulia Saccuta.';
-        contactForm.reset();
-        setTimeout(() => {
-          submitBtn.textContent = originalText;
-          formFeedback.textContent = '';
-        }, 5000);
-      }, 700);
-    });
-
-    // Inizializzazione pagina al caricamento
-    document.addEventListener('DOMContentLoaded', () => {
-      updateCounts();
-      renderGallery();
-    });
+    document.addEventListener('DOMContentLoaded', () => { updateCounts(); renderGallery(); });
   </script>
 </body>
 </html>
