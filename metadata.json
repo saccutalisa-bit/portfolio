@@ -2,5 +2,7 @@
   "name": "Lisa Giulia Saccuta — Portfolio d'Arte Contemporanea",
   "description": "Portfolio artistico contemporaneo di Lisa Giulia Saccuta: pittura a olio, sound art, fotografia e archivio opere.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

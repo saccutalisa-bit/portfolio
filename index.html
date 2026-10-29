@@ -197,7 +197,7 @@
           <div class="bg-gallery-surface border border-gallery-border p-3 sm:p-4">
             <img 
               id="artist-photo"
-              src="assets/aistudio/images/lisa_saccuta_foto.jpg"
+              src="images/lisa_saccuta_foto.jpg"
               alt="Ritratto di Lisa Giulia Saccuta" 
               class="w-full h-auto block grayscale contrast-105 hover:grayscale-0 transition-all duration-700 shadow-sm"
               loading="lazy"
@@ -388,24 +388,54 @@
   </div>
 
   <script>
+    // Bulletproof image resolver for AI Studio, GitHub repository root, GitHub Pages, and local viewing
+    window.addEventListener('error', function(e) {
+      if (e.target && e.target.tagName === 'IMG') {
+        const img = e.target;
+        const src = img.getAttribute('src') || '';
+        const filename = src.split('/').pop().split('?')[0];
+        if (!filename) return;
+
+        const fallbackCandidates = [
+          'images/' + filename,
+          './images/' + filename,
+          'assets/aistudio/images/' + filename,
+          './assets/aistudio/images/' + filename,
+          'public/images/' + filename,
+          './public/images/' + filename
+        ];
+
+        let attempt = parseInt(img.dataset.fallbackAttempt || '0', 10);
+        while (attempt < fallbackCandidates.length) {
+          const candidate = fallbackCandidates[attempt];
+          attempt++;
+          img.dataset.fallbackAttempt = attempt.toString();
+          if (candidate !== src) {
+            img.src = candidate;
+            break;
+          }
+        }
+      }
+    }, true);
+
     const artworks = [
-      { id: "nel-nome-di", title: "Nel nome di", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "Archivio", image: "assets/aistudio/images/nel_nome_di.jpg", description: "Campitura cerulea solcata da una fenditura vermiglia.", colSpan: "lg:col-span-6", aspect: "aspect-[3/4]" },
-      { id: "muddy-sweet", title: "Muddy n’ sweet", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "Archivio", image: "assets/aistudio/images/muddy_n_sweet.jpg", description: "Visione acquatica e vegetale.", colSpan: "lg:col-span-6", aspect: "aspect-[3/4]" },
-      { id: "mariam-per-yair", title: "Mariam per Yair", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "30x40 cm", image: "assets/aistudio/images/mariam_per_yair.jpg", description: "Figura reclinata dal pathos espressionista.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
-      { id: "vincitrice-sul-fallo", title: "Vincitrice sul fallo (Gorgone)", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "50x50 cm", image: "assets/aistudio/images/vincitrice_sul_fallo.jpg", description: "Rielaborazione radicale del mito della Gorgone.", colSpan: "lg:col-span-4", aspect: "aspect-[1/1]" },
-      { id: "uomo-che-piange", title: "Uomo che piange", year: "2026", category: "pittura", medium: "Tecnica Mista", dimensions: "30x40 cm", image: "assets/aistudio/images/uomochepiange.jpg", description: "Sintesi grafica di segno e pittura a olio.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
-      { id: "come-tu-mi-vuoi", title: "Come tu mi vuoi (San Giorgio e il drago)", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "35x50 cm", image: "assets/aistudio/images/come_tu_mi_vuoi.jpg", description: "Iconografia cavalleresca sovvertita.", colSpan: "lg:col-span-6", aspect: "aspect-[7/10]" },
-      { id: "pensieri-intrusivi", title: "Pensieri Intrusivi", year: "2025", category: "pittura", medium: "Olio su compensato", dimensions: "30x27 cm", image: "assets/aistudio/images/pensieri_intrusivi.jpg", description: "Intimità psicologica su piccolo formato.", colSpan: "lg:col-span-6", aspect: "aspect-[1/1]" },
-      { id: "falsi-dei", title: "Falsi Dei", year: "2025", category: "pittura", medium: "Olio su tela", dimensions: "70x100 cm", image: "assets/aistudio/images/falsi_dei.jpg", description: "Sedia solitaria sulla battigia.", colSpan: "lg:col-span-6", aspect: "aspect-[7/10]" },
-      { id: "casa-di-paglia", title: "Nascosti senza dubbi nella casa di paglia", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "25x35 cm", image: "assets/aistudio/images/casa_di_paglia.jpg", description: "La fiaba infantile nel paesaggio siciliano.", colSpan: "lg:col-span-6", aspect: "aspect-[5/7]" },
-      { id: "strumenti-futili", title: "Strumenti Futili", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "80x120 cm", image: "assets/aistudio/images/strumenti_futili.png", description: "Presenza vegetale all'ingresso di un cinema.", colSpan: "lg:col-span-4", aspect: "aspect-[2/3]" },
-      { id: "ierofante", title: "Ierofante", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "70x100 cm", image: "assets/aistudio/images/ierofante.png", description: "Figura sacrale distesa in una teca.", colSpan: "lg:col-span-4", aspect: "aspect-[10/7]" },
-      { id: "tagghiala", title: "Tagghiala!", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x50 cm", image: "assets/aistudio/images/tagghiala.jpg", description: "Mani scultoree impugnano cesoie d'acciaio.", colSpan: "lg:col-span-4", aspect: "aspect-[1/1]" },
-      { id: "kursuf", title: "ḵuršūf", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "70x100 cm", image: "assets/aistudio/images/kursuf.jpg", description: "Il carciofo selvatico come archetipo.", colSpan: "lg:col-span-4", aspect: "aspect-[7/10]" },
-      { id: "betlemme", title: "Betlemme", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x70 cm", image: "assets/aistudio/images/betlemme.jpg", description: "Giovane figura che stringe canarini.", colSpan: "lg:col-span-4", aspect: "aspect-[5/7]" },
-      { id: "raqama", title: "Raqama", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "100x120 cm", image: "assets/aistudio/images/raqama.jpg", description: "Anziana matrona che tesse un pizzo vermiglio.", colSpan: "lg:col-span-4", aspect: "aspect-[5/6]" },
-      { id: "bonobo-dream", title: "Bonobo Dream in a Feminist Utopia", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "15x20 cm", image: "assets/aistudio/images/bonobo_dream.jpg", description: "Il primate bonobo in fitta vegetazione.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
-      { id: "girl-so-confusing", title: "Girl, So Confusing (Sogno)", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x70 cm", image: "assets/aistudio/images/girl_so_confusing.jpg", description: "Dialogo tra cultura pop e maschera onirica.", colSpan: "lg:col-span-8", aspect: "aspect-[7/5]" },
+      { id: "nel-nome-di", title: "Nel nome di", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "Archivio", image: "images/nel_nome_di.jpg", description: "Campitura cerulea solcata da una fenditura vermiglia.", colSpan: "lg:col-span-6", aspect: "aspect-[3/4]" },
+      { id: "muddy-sweet", title: "Muddy n’ sweet", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "Archivio", image: "images/muddy_n_sweet.jpg", description: "Visione acquatica e vegetale.", colSpan: "lg:col-span-6", aspect: "aspect-[3/4]" },
+      { id: "mariam-per-yair", title: "Mariam per Yair", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "30x40 cm", image: "images/mariam_per_yair.jpg", description: "Figura reclinata dal pathos espressionista.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
+      { id: "vincitrice-sul-fallo", title: "Vincitrice sul fallo (Gorgone)", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "50x50 cm", image: "images/vincitrice_sul_fallo.jpg", description: "Rielaborazione radicale del mito della Gorgone.", colSpan: "lg:col-span-4", aspect: "aspect-[1/1]" },
+      { id: "uomo-che-piange", title: "Uomo che piange", year: "2026", category: "pittura", medium: "Tecnica Mista", dimensions: "30x40 cm", image: "images/uomochepiange.jpg", description: "Sintesi grafica di segno e pittura a olio.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
+      { id: "come-tu-mi-vuoi", title: "Come tu mi vuoi (San Giorgio e il drago)", year: "2026", category: "pittura", medium: "Olio su tela", dimensions: "35x50 cm", image: "images/come_tu_mi_vuoi.jpg", description: "Iconografia cavalleresca sovvertita.", colSpan: "lg:col-span-6", aspect: "aspect-[7/10]" },
+      { id: "pensieri-intrusivi", title: "Pensieri Intrusivi", year: "2025", category: "pittura", medium: "Olio su compensato", dimensions: "30x27 cm", image: "images/pensieri_intrusivi.jpg", description: "Intimità psicologica su piccolo formato.", colSpan: "lg:col-span-6", aspect: "aspect-[1/1]" },
+      { id: "falsi-dei", title: "Falsi Dei", year: "2025", category: "pittura", medium: "Olio su tela", dimensions: "70x100 cm", image: "images/falsi_dei.jpg", description: "Sedia solitaria sulla battigia.", colSpan: "lg:col-span-6", aspect: "aspect-[7/10]" },
+      { id: "casa-di-paglia", title: "Nascosti senza dubbi nella casa di paglia", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "25x35 cm", image: "images/casa_di_paglia.jpg", description: "La fiaba infantile nel paesaggio siciliano.", colSpan: "lg:col-span-6", aspect: "aspect-[5/7]" },
+      { id: "strumenti-futili", title: "Strumenti Futili", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "80x120 cm", image: "images/strumenti_futili.png", description: "Presenza vegetale all'ingresso di un cinema.", colSpan: "lg:col-span-4", aspect: "aspect-[2/3]" },
+      { id: "ierofante", title: "Ierofante", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "70x100 cm", image: "images/ierofante.png", description: "Figura sacrale distesa in una teca.", colSpan: "lg:col-span-4", aspect: "aspect-[10/7]" },
+      { id: "tagghiala", title: "Tagghiala!", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x50 cm", image: "images/tagghiala.jpg", description: "Mani scultoree impugnano cesoie d'acciaio.", colSpan: "lg:col-span-4", aspect: "aspect-[1/1]" },
+      { id: "kursuf", title: "ḵuršūf", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "70x100 cm", image: "images/kursuf.jpg", description: "Il carciofo selvatico come archetipo.", colSpan: "lg:col-span-4", aspect: "aspect-[7/10]" },
+      { id: "betlemme", title: "Betlemme", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x70 cm", image: "images/betlemme.jpg", description: "Giovane figura che stringe canarini.", colSpan: "lg:col-span-4", aspect: "aspect-[5/7]" },
+      { id: "raqama", title: "Raqama", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "100x120 cm", image: "images/raqama.jpg", description: "Anziana matrona che tesse un pizzo vermiglio.", colSpan: "lg:col-span-4", aspect: "aspect-[5/6]" },
+      { id: "bonobo-dream", title: "Bonobo Dream in a Feminist Utopia", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "15x20 cm", image: "images/bonobo_dream.jpg", description: "Il primate bonobo in fitta vegetazione.", colSpan: "lg:col-span-4", aspect: "aspect-[3/4]" },
+      { id: "girl-so-confusing", title: "Girl, So Confusing (Sogno)", year: "2025", category: "pittura", medium: "Olio su Tela", dimensions: "50x70 cm", image: "images/girl_so_confusing.jpg", description: "Dialogo tra cultura pop e maschera onirica.", colSpan: "lg:col-span-8", aspect: "aspect-[7/5]" },
       { id: "dove-habitat-immaginario", title: "Mostra Fotografica \"Dove Habitat L'immaginario\"", year: "2020", category: "fotografia", medium: "Reportage Fotografico", dimensions: "Youth Center Macchitella", isTextBlock: true, url: "https://percorsiconibambini.it/youthcity/2020/02/04/a-gela-la-prima-mostra-dove-habitat-limmagginario-e-un-successo-adolescenti-raccontano-la-citta/", urlLabel: "Leggi documentazione", description: "Indagine fotografica documentaria sul litorale e l'archeologia post-industriale.", colSpan: "lg:col-span-6" },
       { id: "sound-art-mpds", title: "Sound Art / MPDS Audio Archive", year: "2024", category: "sound-art", medium: "Composizione Sonora", dimensions: "Radio Ciroma / RAM", isTextBlock: true, url: "https://www.mpdsaudioarchive.org/suoni/4-ronald-dump-lisa-saccuta/", urlLabel: "Ascolta traccia", description: "Progetto di ricerca sonora dedicato all'indagine acustica ambientale.", colSpan: "lg:col-span-6" }
     ];
